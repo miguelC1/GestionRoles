@@ -9,6 +9,7 @@ import java.util.List;
 @Table(name = "user")
 public class User {
     @Id
+    //@SequenceGenerator(name = "user_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -29,6 +30,17 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserRol> userRoles;
+
+    public User(String username, String password, String email,Timestamp createdAt) {
+        this.username=username;
+        this.password=password;
+        this.email=email;
+        this.createdAt=createdAt;
+    }
+
+    public User() {
+
+    }
 
 
     public Long getId() {

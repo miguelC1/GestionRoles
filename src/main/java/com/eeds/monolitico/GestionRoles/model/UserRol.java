@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 @Table(name = "user_rol")
 public class UserRol {
     @Id
+    //@SequenceGenerator(name = "user_rol_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -17,11 +18,11 @@ public class UserRol {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "rol_id", referencedColumnName = "id")
     private Rol rol;
 

@@ -7,6 +7,7 @@ import java.util.Date;
 @Table(name = "user_detail")
 public class UserDetail {
     @Id
+    //@SequenceGenerator(name = "user_detail_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

@@ -1,18 +1,23 @@
 package com.eeds.monolitico.GestionRoles;
 
+import com.eeds.monolitico.GestionRoles.model.User;
+import com.eeds.monolitico.GestionRoles.repository.UserRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.sql.Timestamp;
 import java.util.Optional;
 
 @SpringBootApplication
-public class GestionRolesApplication {
+public class GestionRolesApplication  {
 
 	private static final Logger log = LoggerFactory.getLogger(GestionRolesApplication.class);
 
@@ -59,4 +64,5 @@ public class GestionRolesApplication {
 				env.getActiveProfiles()
 		);
 	}
+
 }
