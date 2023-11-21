@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "user_detail")
+@Table(name = "user_details")
 public class UserDetail {
     @Id
     //@SequenceGenerator(name = "user_detail_sequence" ,allocationSize = 1)

@@ -3,6 +3,7 @@ package com.eeds.monolitico.GestionRoles.service.implement;
 import com.eeds.monolitico.GestionRoles.model.User;
 import com.eeds.monolitico.GestionRoles.repository.UserRepository;
 import com.eeds.monolitico.GestionRoles.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,11 +19,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> listaUsuarios() {
-        return userRepository.findAll();
+        List<User> lista= userRepository.findAll();
+        return lista;
     }
 
     @Override
-    public User save(User user) {
+    public User guardar(User user) {
         return userRepository.save(user);
     }
 }

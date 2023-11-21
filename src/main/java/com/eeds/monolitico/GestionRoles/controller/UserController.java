@@ -31,6 +31,6 @@ public class UserController {
             throw new IllegalArgumentException("I new user cannot already have an id");
         }
         User nuevoDb= userService.save(user);
-        return ResponseEntity.created(new URI("/v1/user/"+nuevoDb.getId())).body(nuevoDb);
+        return ResponseEntity.created(new URI("users/"+nuevoDb.getId())).body(nuevoDb);
     }
 }

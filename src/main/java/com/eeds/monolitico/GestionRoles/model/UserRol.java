@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "user_rol")
+@Table(name = "user_rols")
 public class UserRol {
     @Id
     //@SequenceGenerator(name = "user_rol_sequence" ,allocationSize = 1)
