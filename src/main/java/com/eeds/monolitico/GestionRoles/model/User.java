@@ -29,8 +29,8 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserDetail userDetail;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<UserRol> userRoles;
+/*    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserRol> userRoles;*/
 
     public User(String username, String password, String email,Timestamp createdAt) {
         this.username=username;

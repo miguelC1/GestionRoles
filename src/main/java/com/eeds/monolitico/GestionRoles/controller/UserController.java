@@ -1,5 +1,6 @@
 package com.eeds.monolitico.GestionRoles.controller;
 
+import com.eeds.monolitico.GestionRoles.input.UserInput;
 import com.eeds.monolitico.GestionRoles.model.User;
 import com.eeds.monolitico.GestionRoles.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +23,12 @@ public class UserController {
 
     @GetMapping("/listar")
     public ResponseEntity<List<User>> listaUsuarios(){
-        return ResponseEntity.ok().body(userService.listaUsuarios());
+        return ResponseEntity.ok().body(userService.listarUsuarios());
     }
 
     @PostMapping
-    public ResponseEntity<User> crear(@RequestBody final User user) throws URISyntaxException {
-        if(user.getId()!=null){
-            throw new IllegalArgumentException("I new user cannot already have an id");
-        }
-        User nuevoDb= userService.save(user);
+    public ResponseEntity<User> guardar(@RequestBody final UserInput user) throws URISyntaxException {
+        User nuevoDb= userService.guardar(user);
         return ResponseEntity.created(new URI("users/"+nuevoDb.getId())).body(nuevoDb);
     }
 }

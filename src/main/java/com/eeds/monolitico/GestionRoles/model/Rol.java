@@ -15,9 +15,6 @@ public class Rol {
     @Column(name = "name", length = 100)
     private String name;
 
-    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
-    private List<UserRol> userRoles;
-
     public Long getId() {
         return id;
     }
@@ -34,11 +31,4 @@ public class Rol {
         this.name = name;
     }
 
-    public List<UserRol> getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(List<UserRol> userRoles) {
-        this.userRoles = userRoles;
-    }
 }
