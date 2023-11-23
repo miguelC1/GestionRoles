@@ -25,4 +25,6 @@ public class UserDetailServiceImpl implements UserDetailService {
     public UserDetail guardar(UserDetail userDetail) {
         return userDetailRepository.save(userDetail);
     }
+
+
 }

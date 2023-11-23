@@ -34,12 +34,12 @@ public class RolServiceImpl implements RolService {
     }
 
     @Override
-    public Rol actualizarRol(Rol rol) {
+    public Rol actualizar(Rol rol) {
         return rolRepository.save(rol);
     }
 
     @Override
-    public void eliminarRol(Long id) {
+    public void eliminar(Long id) {
         Optional<Rol> rolOptional = rolRepository.findById(id);
 
         if (rolOptional.isPresent()) {

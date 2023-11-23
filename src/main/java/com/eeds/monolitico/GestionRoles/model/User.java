@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -22,27 +23,22 @@ public class User {
     @Column(name = "email", length = 150)
     private String email;
 
-    @Column(name = "create_at")
-    private Timestamp createdAt;
+    @Column(name = "create_at", columnDefinition = "TIMESTAMP")
+    private LocalDateTime createdAt;
 
     @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserDetail userDetail;
 
-/*    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<UserRol> userRoles;*/
+    public User() {
+    }
 
-    public User(String username, String password, String email,Timestamp createdAt) {
+    public User(String username, String password, String email, LocalDateTime  createdAt) {
         this.username=username;
         this.password=password;
         this.email=email;
         this.createdAt=createdAt;
     }
-
-    public User() {
-
-    }
-
 
     public Long getId() {
         return id;
@@ -76,12 +72,19 @@ public class User {
         this.email = email;
     }
 
-    public Timestamp getCreated_at() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreated_at(Timestamp createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
+    public UserDetail getUserDetail() {
+        return userDetail;
+    }
+
+    public void setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
+    }
 }

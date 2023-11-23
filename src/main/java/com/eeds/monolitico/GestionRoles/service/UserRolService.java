@@ -8,4 +8,5 @@ import java.util.List;
 public interface UserRolService {
     List<UserRol> listarUserRol();
     UserRol guardar(UserRol userRol);
+    UserRol actualizarEstado(Long id, boolean activo);
 }

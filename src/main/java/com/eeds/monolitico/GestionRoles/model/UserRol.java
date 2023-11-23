@@ -15,7 +15,7 @@ public class UserRol {
     @Column(name = "active")
     private boolean active;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP")
     private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.EAGER)

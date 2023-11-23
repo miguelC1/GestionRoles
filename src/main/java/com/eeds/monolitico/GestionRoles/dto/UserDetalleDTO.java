@@ -1,19 +1,17 @@
-package com.eeds.monolitico.GestionRoles.input;
+package com.eeds.monolitico.GestionRoles.dto;
 
-import jakarta.persistence.Column;
-
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class UserInput {
+public class UserDetalleDTO {
     private String username;
-    private String password;
     private String email;
+    private LocalDateTime createdAt;
     private String firstName;
     private String lastName;
     private Integer age;
-    private Date birthDay;
+    private String birthDay;
 
     public String getUsername() {
         return username;
@@ -23,20 +21,20 @@ public class UserInput {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getFirstName() {
@@ -51,7 +49,7 @@ public class UserInput {
         return lastName;
     }
 
-    public void setLast_name(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -63,11 +61,11 @@ public class UserInput {
         this.age = age;
     }
 
-    public Date getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 }
