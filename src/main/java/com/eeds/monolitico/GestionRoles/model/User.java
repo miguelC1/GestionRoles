@@ -2,6 +2,7 @@ package com.eeds.monolitico.GestionRoles.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -87,4 +88,6 @@ public class User {
     public void setUserDetail(UserDetail userDetail) {
         this.userDetail = userDetail;
     }
+
+
 }

@@ -6,22 +6,21 @@ import com.eeds.monolitico.GestionRoles.input.UserInput;
 import com.eeds.monolitico.GestionRoles.model.Rol;
 import com.eeds.monolitico.GestionRoles.model.User;
 import com.eeds.monolitico.GestionRoles.model.UserDetail;
+import com.eeds.monolitico.GestionRoles.model.UserRol;
+import com.eeds.monolitico.GestionRoles.repository.RolRepository;
 import com.eeds.monolitico.GestionRoles.repository.UserDetailRepository;
 import com.eeds.monolitico.GestionRoles.repository.UserRepository;
+import com.eeds.monolitico.GestionRoles.service.Exception.RolNotFoundException;
+import com.eeds.monolitico.GestionRoles.service.Exception.UserNotFoundException;
 import com.eeds.monolitico.GestionRoles.service.UserService;
-import org.apache.catalina.LifecycleState;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,7 +29,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserDetailRepository userDetailRepository;
 
-    public UserServiceImpl(UserRepository userRepository, UserDetailRepository userDetailRepository) {
+    public UserServiceImpl(UserRepository userRepository, UserDetailRepository userDetailRepository, RolRepository rolRepository) {
         this.userRepository = userRepository;
         this.userDetailRepository = userDetailRepository;
     }
@@ -58,6 +57,12 @@ public class UserServiceImpl implements UserService {
         userDetail.setBirthDay(user.getBirthDay());
         userDetailRepository.save(userDetail);
         return nuevo;
+    }
+
+    @Override
+    public User obtenerUserPorId(Long id) {
+        Optional<User> user= userRepository.findById(id);
+        return user.get();
     }
 
     @Override

@@ -11,8 +11,11 @@ import java.util.List;
 public interface UserService {
     List<User> listarUsuarios();
     User guardar(UserInput user);
+    User obtenerUserPorId(Long id);
     List<UserDetalleDTO> listarDetallado();
     List<UserDTO> listarNormal();
     User actualizar(User user);
     void eliminar(Long id);
+
+
 }

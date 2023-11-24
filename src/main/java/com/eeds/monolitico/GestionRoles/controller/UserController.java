@@ -31,8 +31,14 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> guardar(@RequestBody final UserInput user) throws URISyntaxException {
-        User nuevoDb= userService.guardar(user);
-        return ResponseEntity.created(new URI("users/"+nuevoDb.getId())).body(nuevoDb);
+        try{
+            User nuevoDb= userService.guardar(user);
+            return ResponseEntity.created(new URI("users/"+nuevoDb.getId())).body(nuevoDb);
+        }catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+
     }
 
     @GetMapping("/listarNormal")
@@ -42,18 +48,27 @@ public class UserController {
     }
     @PutMapping("/update")
     public ResponseEntity<User> actualizar(@RequestBody User user) {
-        User userActualizado = userService.actualizar(user);
-        if (userActualizado != null) {
-            return ResponseEntity.ok(userActualizado);
-        } else {
-            return ResponseEntity.notFound().build();
+        try{
+            User userActualizado = userService.actualizar(user);
+            if (userActualizado != null) {
+                return ResponseEntity.ok(userActualizado);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        }catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        userService.eliminar(id);
-        return ResponseEntity.noContent().build();
+        try {
+            userService.eliminar(id);
+            return ResponseEntity.noContent().build();
+        }catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/listarDetallado")
