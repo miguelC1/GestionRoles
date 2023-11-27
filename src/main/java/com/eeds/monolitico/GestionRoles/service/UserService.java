@@ -12,9 +12,10 @@ public interface UserService {
     List<User> listarUsuarios();
     User guardar(UserInput user);
     User obtenerUserPorId(Long id);
+    UserInput obtenerUserDetalladoPorId(Long id);
     List<UserDetalleDTO> listarDetallado();
     List<UserDTO> listarNormal();
-    User actualizar(User user);
+    User editar(Long UserIdU, UserInput user);
     void eliminar(Long id);
 
 

@@ -34,7 +34,7 @@ public class RolServiceImpl implements RolService {
     }
 
     @Override
-    public Rol actualizar(Rol rol) {
+    public Rol editar(Rol rol) {
         return rolRepository.save(rol);
     }
 

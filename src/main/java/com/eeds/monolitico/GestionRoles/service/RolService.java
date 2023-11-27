@@ -9,7 +9,7 @@ public interface RolService {
     List<Rol> listarRoles();
     Rol obtenerRolPorId(Long id);
     Rol guardar(Rol rol);
-    Rol actualizar( Rol rol);
+    Rol editar(Rol rol);
     void eliminar(Long id);
 
 }

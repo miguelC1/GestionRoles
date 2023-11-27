@@ -46,10 +46,10 @@ public class RolController {
 
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Rol> actualizar(@RequestBody Rol rol) {
+    @PutMapping("/editar")
+    public ResponseEntity<Rol> editar(@RequestBody Rol rol) {
         try {
-            Rol rolActualizado = rolService.actualizar(rol);
+            Rol rolActualizado = rolService.editar(rol);
             if (rolActualizado != null) {
                 return ResponseEntity.ok(rolActualizado);
             } else {

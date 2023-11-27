@@ -6,7 +6,6 @@ import com.eeds.monolitico.GestionRoles.input.UserInput;
 import com.eeds.monolitico.GestionRoles.model.Rol;
 import com.eeds.monolitico.GestionRoles.model.User;
 import com.eeds.monolitico.GestionRoles.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,10 +45,10 @@ public class UserController {
         List<UserDTO> list= userService.listarNormal();
         return new ResponseEntity(list, HttpStatus.OK);
     }
-    @PutMapping("/update")
-    public ResponseEntity<User> actualizar(@RequestBody User user) {
+    @PutMapping("/editar/{id}")
+    public ResponseEntity<User> editar(@PathVariable Long id,@RequestBody UserInput user) {
         try{
-            User userActualizado = userService.actualizar(user);
+            User userActualizado = userService.editar(id,user);
             if (userActualizado != null) {
                 return ResponseEntity.ok(userActualizado);
             } else {
@@ -59,6 +58,25 @@ public class UserController {
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<User> obtenerUserPorId(@PathVariable Long id) {
+        User user = userService.obtenerUserPorId(id);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/detallado/{id}")
+    public ResponseEntity<UserInput> obtenerUserDetalladoPorId(@PathVariable Long id) {
+        UserInput user = userService.obtenerUserDetalladoPorId(id);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")

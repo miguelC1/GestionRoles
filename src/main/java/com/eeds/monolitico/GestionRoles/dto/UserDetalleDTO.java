@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class UserDetalleDTO {
+
+    private Long id;
     private String username;
     private String email;
     private LocalDateTime createdAt;
@@ -12,6 +14,14 @@ public class UserDetalleDTO {
     private String lastName;
     private Integer age;
     private String birthDay;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
